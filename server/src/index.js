@@ -10,6 +10,8 @@ let cookieParser = require('cookie-parser')
 const app = express()
 const port = process.env.PORT || 5000
 
+console.log(`The client is ${process.env.CLIENT}`);
+
 const corsOptions = {
     origin: process.env.CLIENT,
     credentials: true

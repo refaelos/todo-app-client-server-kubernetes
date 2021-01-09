@@ -6,6 +6,6 @@ spec:
  accessModes:
  - ReadWriteMany
  capacity:
-   storage: 1G
+   storage: 100M
  hostPath:
    path: /tmp/todo-pv

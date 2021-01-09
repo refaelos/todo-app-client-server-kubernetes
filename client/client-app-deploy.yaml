@@ -7,10 +7,14 @@ spec:
   selector:
     matchLabels:
       app: todo-client-app
+      tier: frontend
+      track: stable
   template:
     metadata:
       labels:
         app: todo-client-app
+        tier: frontend
+        track: stable
     spec:
       containers:
       - image: todo-client-kubernetes-app:latest

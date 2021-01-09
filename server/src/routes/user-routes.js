@@ -7,6 +7,7 @@ const routes = express.Router()
 // User create (signup)
 routes.post('/signup', async (req, res) => {
     const newUser = req.body
+    console.log(`signup with name: ${newUser.name}  email: ${newUser.email}  pass: ${newUser.password}`);
     const fieldsToAdd = Object.keys(newUser)
     const fieldsInModel = ['name', 'email', 'password']
     const isAdditionAllowed = fieldsToAdd.every((field) => fieldsInModel.includes(field))
@@ -50,14 +51,18 @@ routes.post('/login', async (req, res) => {
             httpOnly: true,
         };
 
+        console.log(`signup with email: ${req.body.email}  pass: ${req.body.password}`);
+
         const user = await Users.findByCredentials(req.body.email, req.body.password)
-
+        console.log(`user: ${user}`);
         const token = await user.generateAuthToken()
-
+        console.log(`token: ${token}`);
         res.cookie('todo-jt', token, cookieOptions).send({ user, token })
+        console.log(`paka`);
 
     } catch (e) {
-        res.status(400).send()
+        console.log(`err ${e}`);
+        res.status(400).send();
     }
 })
 

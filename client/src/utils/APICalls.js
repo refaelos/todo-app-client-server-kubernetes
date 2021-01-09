@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_baseAPIURL,
+    baseURL: '/s/',
     withCredentials: true,
 });
 
@@ -16,7 +16,7 @@ axiosInstance.interceptors.response.use(
 );
 
 export const signout = () => {
-    return axiosInstance.post(process.env.REACT_APP_baseAPIURL + '/logout').then(user => {
+    return axiosInstance.post('/logout').then(user => {
         // delete axiosInstance.defaults.headers.common["Authorization"];
         return user.data
     })

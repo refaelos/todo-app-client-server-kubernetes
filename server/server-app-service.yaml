@@ -4,8 +4,9 @@ metadata:
   name: todo-backend-service
 spec:
   ports:
-  - port: 5000
+  - protocol: TCP
+    port: 5000
     targetPort: 5000
   selector:
     app: todo-server-app
-  type: LoadBalancer
+    tier: backend

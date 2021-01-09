@@ -3,20 +3,25 @@ kind: Deployment
 metadata:
   name: todo-server-app-deploy
 spec:
-  replicas: 3
   selector:
     matchLabels:
       app: todo-server-app
+      tier: backend
+      track: stable
+  replicas: 1
   template:
     metadata:
       labels:
         app: todo-server-app
+        tier: backend
+        track: stable
     spec:
       containers:
       - image: todo-server-kubernetes-app:latest
         name: container1
         ports:
-        - containerPort: 5000
+        - name: http
+          containerPort: 5000
         imagePullPolicy: IfNotPresent
         envFrom:
         - configMapRef:
