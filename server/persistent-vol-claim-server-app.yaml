@@ -9,3 +9,4 @@ spec:
     requests:
       storage: 100M
   storageClassName: ""
+  volumeName: todo-app-pv
